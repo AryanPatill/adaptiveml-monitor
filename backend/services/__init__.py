@@ -15,6 +15,13 @@ from backend.services.conformal_service import (
     run_predictions,
     get_uncertainty_summary,
 )
+from backend.services.active_learning_service import (
+    populate_label_queue,
+    get_pending_queue,
+    submit_human_label,
+    get_reviewed_as_dataframe,
+    get_queue_stats,
+)
 
 __all__ = [
     "load_train",
@@ -28,4 +35,9 @@ __all__ = [
     "build_conformal_model",
     "run_predictions",
     "get_uncertainty_summary",
+    "populate_label_queue",
+    "get_pending_queue",
+    "submit_human_label",
+    "get_reviewed_as_dataframe",
+    "get_queue_stats",
 ]
