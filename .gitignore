@@ -1,0 +1,27 @@
+# Create .gitignore
+cat > .gitignore << 'EOF'
+# Virtual environment
+backend/venv/
+
+# Model artifacts
+model_store/
+
+# Database
+*.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data files (too large)
+data/
+
+# Environment files
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
