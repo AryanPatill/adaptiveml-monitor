@@ -167,6 +167,9 @@ def train_continual(
     # Keep only confidently pseudo-labeled samples (drop ABSTAIN)
     pseudo_df = pseudo_df[pseudo_df["pseudo_label"] != ABSTAIN].copy()
     pseudo_df["label"] = pseudo_df["pseudo_label"]
+    # Drop Snorkel columns — must not leak into model features
+    pseudo_df = pseudo_df.drop(columns=["pseudo_label", "pseudo_confidence"], errors="ignore")
+
 
     logger.info(
         f"[Continual] Confirmed: {len(confirmed)} | "
@@ -247,6 +250,7 @@ def retrain_with_human_labels(
     pseudo_df = generate_pseudo_labels(unconfirmed, label_matrix)
     pseudo_df = pseudo_df[pseudo_df["pseudo_label"] != ABSTAIN].copy()
     pseudo_df["label"] = pseudo_df["pseudo_label"]
+    pseudo_df = pseudo_df.drop(columns=["pseudo_label", "pseudo_confidence"], errors="ignore")
 
     # Combine all three sources:
     # confirmed (ground truth) + pseudo (weak) + human-reviewed (strong)

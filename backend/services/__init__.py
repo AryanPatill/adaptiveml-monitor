@@ -10,6 +10,11 @@ from backend.services.training_service import (
     retrain_with_human_labels,
     get_model_comparison,
 )
+from backend.services.conformal_service import (
+    build_conformal_model,
+    run_predictions,
+    get_uncertainty_summary,
+)
 
 __all__ = [
     "load_train",
@@ -20,4 +25,7 @@ __all__ = [
     "train_continual",
     "retrain_with_human_labels",
     "get_model_comparison",
+    "build_conformal_model",
+    "run_predictions",
+    "get_uncertainty_summary",
 ]
